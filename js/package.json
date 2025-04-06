@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "repl": "node ./src/main.js",
-    "test": "node ./test/main.test.js"
+    "test": "node ./test/lexer.test.js"
   },
   "keywords": [],
   "author": "",

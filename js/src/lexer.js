@@ -1,5 +1,5 @@
 // 导入用于处理标记的模块和函数
-import { Token, TokenType, lookupIdent } from "./token";
+import { Token, TokenType, lookupIdent } from "./token.js";
 
 // Lexer 类用于将输入字符串分解为标记（Token）
 export class Lexer {
@@ -216,10 +216,12 @@ export class Lexer {
     // 读取一个字符串标记
     readString() {
         let start = this.position + 1 // 跳过开头的引号
-        // 循环读取字符，直到遇到结束引号
-        while (this.ch !== '"' && this.ch !== undefined) {
+        while (true) {
             this.readChar()
-        }
+            if (this.ch === '"') {
+              break
+            }
+          }
         // 返回从开始位置到当前位置之间的子字符串作为字符串
         return this.input.substring(start, this.position)
     }
